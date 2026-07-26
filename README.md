@@ -1,3 +1,6 @@
+
+
+
 # Retail Shelf Automation (FlejesAuto)
 
 Sistema configurable de automatización desarrollado en **C# / .NET** diseñado para la gestión, actualización, formateo e impresión de flejes y etiquetas de precios en estanterías para todo tipo de tiendas retail.
@@ -12,7 +15,11 @@ Sistema configurable de automatización desarrollado en **C# / .NET** diseñado 
 * **Auditoría y Registros:** Captura de eventos e historial de procesos para resolver inconsistencias rápidamente.
 
 ---
+## 📹 Demostración en Video
 
+<video src="https://github.com/user-attachments/assets/7e8df372-c128-4478-b0e6-4ada4bd14e3f" controls="controls" style="max-width: 100%;"></video>
+
+---
 ## 🛠️ Tecnologías Utilizadas
 
 * **Lenguaje:** C#
@@ -26,3 +33,7 @@ Sistema configurable de automatización desarrollado en **C# / .NET** diseñado 
    git clone [https://github.com/Liltryn/retail-shelf-automation.git](https://github.com/Liltryn/retail-shelf-automation.git)
    cd retail-shelf-automation
    ```
+
+
+
+
