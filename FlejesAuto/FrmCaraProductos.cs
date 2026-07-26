@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualBasic;
-using OxxoFlejesAuto.Modelos;
+using FlejesAuto.Modelos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using UglyToad.PdfPig;
 using UglyToad.PdfPig.Content;
 
-namespace OxxoFlejesAuto
+namespace FlejesAuto
 {
     public partial class FrmCaraProductos : Form
     {
@@ -138,7 +138,7 @@ namespace OxxoFlejesAuto
                     if (estaMarcado && celdaUpc != null && celdaUpc.Value != null)
                     {
                         string codigoBarra = celdaUpc.Value.ToString() ?? string.Empty;
-                        ventanaEncontrada = OxxoFlejesAuto.Automatizacion.ControladorTeclado.EnviarCodigoAAppFlejes(codigoBarra, milisegundosDelay);
+                        ventanaEncontrada = FlejesAuto.Automatizacion.ControladorTeclado.EnviarCodigoAAppFlejes(codigoBarra, milisegundosDelay);
 
                         if (!ventanaEncontrada)
                         {
@@ -160,7 +160,7 @@ namespace OxxoFlejesAuto
             {
                 if (producto.Upc == null) continue;
 
-                bool ventanaEncontrada = OxxoFlejesAuto.Automatizacion.ControladorTeclado.EnviarCodigoAAppFlejes(producto.Upc, milisegundosDelay);
+                bool ventanaEncontrada = FlejesAuto.Automatizacion.ControladorTeclado.EnviarCodigoAAppFlejes(producto.Upc, milisegundosDelay);
 
                 if (!ventanaEncontrada)
                 {
@@ -202,7 +202,7 @@ namespace OxxoFlejesAuto
                 if (_bandejaActual == null) return;
 
                 this.Cursor = Cursors.WaitCursor;
-                var productoEncontrado = await OxxoFlejesAuto.Datos.ConexionApex.BuscarProductoEnApexAsync(codigoEscaneado);
+                var productoEncontrado = await FlejesAuto.Datos.ConexionApex.BuscarProductoEnApexAsync(codigoEscaneado);
                 this.Cursor = Cursors.Default;
 
                 if (productoEncontrado != null)
@@ -212,7 +212,7 @@ namespace OxxoFlejesAuto
 
                     if (_bandejaActual.Productos == null)
                     {
-                        _bandejaActual.Productos = new List<OxxoFlejesAuto.Modelos.ProductoFleje>();
+                        _bandejaActual.Productos = new List<FlejesAuto.Modelos.ProductoFleje>();
                     }
 
                     if (!_bandejaActual.Productos.Any(p => p.Upc == productoEncontrado.Upc))
@@ -253,7 +253,7 @@ namespace OxxoFlejesAuto
                     return;
                 }
 
-                var sugerencias = await OxxoFlejesAuto.Datos.ConexionApex.BuscarListaProductosEnApexAsync(texto);
+                var sugerencias = await FlejesAuto.Datos.ConexionApex.BuscarListaProductosEnApexAsync(texto);
 
                 if (sugerencias != null && sugerencias.Count > 0 && lstSugerencias != null)
                 {
@@ -290,13 +290,13 @@ namespace OxxoFlejesAuto
         {
             if (sender is ListBox lista && lista.SelectedIndex != -1 && lista.SelectedItem != null && _bandejaActual != null)
             {
-                var productoSeleccionado = lista.SelectedItem as OxxoFlejesAuto.Modelos.ProductoFleje;
+                var productoSeleccionado = lista.SelectedItem as FlejesAuto.Modelos.ProductoFleje;
 
                 if (productoSeleccionado != null)
                 {
                     if (_bandejaActual.Productos == null)
                     {
-                        _bandejaActual.Productos = new List<OxxoFlejesAuto.Modelos.ProductoFleje>();
+                        _bandejaActual.Productos = new List<FlejesAuto.Modelos.ProductoFleje>();
                     }
 
                     if (!_bandejaActual.Productos.Any(p => p.Upc == productoSeleccionado.Upc))
@@ -387,7 +387,7 @@ namespace OxxoFlejesAuto
                 var nuevaBandeja = new BandejaMueble
                 {
                     NombreBandeja = nombreNuevaBandeja.Trim(),
-                    Productos = new List<OxxoFlejesAuto.Modelos.ProductoFleje>()
+                    Productos = new List<FlejesAuto.Modelos.ProductoFleje>()
                 };
 
                 _caraLocal.Bandejas.Add(nuevaBandeja);
@@ -498,7 +498,7 @@ namespace OxxoFlejesAuto
                             .ToList();
 
                         // 4. 🌟 LLAMADA CORREGIDA: Apunta al método centralizado en Datos.ConexionApex
-                        var productosDesdeApexMasivo = await OxxoFlejesAuto.Datos.ConexionApex.BuscarListaProductosPorLoteEnApexAsync(upcsParaConsultar);
+                        var productosDesdeApexMasivo = await FlejesAuto.Datos.ConexionApex.BuscarListaProductosPorLoteEnApexAsync(upcsParaConsultar);
                         var dictProductosApex = productosDesdeApexMasivo
                             .GroupBy(p => p.Upc)
                             .ToDictionary(g => g.Key ?? string.Empty, g => g.First());
@@ -507,7 +507,7 @@ namespace OxxoFlejesAuto
                         {
                             foreach (var bandeja in _caraLocal.Bandejas)
                             {
-                                bandeja.Productos = new List<OxxoFlejesAuto.Modelos.ProductoFleje>();
+                                bandeja.Productos = new List<FlejesAuto.Modelos.ProductoFleje>();
                             }
                         }
 
@@ -533,7 +533,7 @@ namespace OxxoFlejesAuto
 
                             var bandejaDestino = _caraLocal.Bandejas[indiceBandejaTarget];
                             if (bandejaDestino.Productos == null)
-                                bandejaDestino.Productos = new List<OxxoFlejesAuto.Modelos.ProductoFleje>();
+                                bandejaDestino.Productos = new List<FlejesAuto.Modelos.ProductoFleje>();
 
                             if (bandejaDestino.Productos.Any(p => p.Upc == prodPdf.Upc)) continue;
 
@@ -565,7 +565,7 @@ namespace OxxoFlejesAuto
                             // CASO C: No existe de verdad en el catálogo central
                             else
                             {
-                                bandejaDestino.Productos.Add(new OxxoFlejesAuto.Modelos.ProductoFleje
+                                bandejaDestino.Productos.Add(new FlejesAuto.Modelos.ProductoFleje
                                 {
                                     Upc = prodPdf.Upc,
                                     Nombre = "⚠️ FALTANTE EN BD",

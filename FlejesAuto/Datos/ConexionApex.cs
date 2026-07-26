@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
-namespace OxxoFlejesAuto.Datos
+namespace FlejesAuto.Datos
 {
     public static class ConexionApex
     {
@@ -32,7 +32,7 @@ namespace OxxoFlejesAuto.Datos
         // ===================================================
         // 1. BUSCADOR DIRECTO (Para barra manual - Enter)
         // ===================================================
-        public static async Task<OxxoFlejesAuto.Modelos.ProductoFleje?> BuscarProductoEnApexAsync(string criterioBusqueda)
+        public static async Task<FlejesAuto.Modelos.ProductoFleje?> BuscarProductoEnApexAsync(string criterioBusqueda)
         {
             try
             {
@@ -65,7 +65,7 @@ namespace OxxoFlejesAuto.Datos
                             string upc = (item["upc"] ?? item["Upc"] ?? item["UPC"])?.ToString() ?? string.Empty;
                             string nombreReal = (item["nombre"] ?? item["Nombre"] ?? item["NOMBRE"])?.ToString() ?? "Sin Nombre";
 
-                            return new OxxoFlejesAuto.Modelos.ProductoFleje
+                            return new FlejesAuto.Modelos.ProductoFleje
                             {
                                 MecanismoSeleccion = false,
                                 Upc = upc,
@@ -90,9 +90,9 @@ namespace OxxoFlejesAuto.Datos
         // ===================================================
         // 2. BUSCADOR PREDICTIVO (Para las sugerencias de la barra)
         // ===================================================
-        public static async Task<List<OxxoFlejesAuto.Modelos.ProductoFleje>> BuscarListaProductosEnApexAsync(string criterioBusqueda)
+        public static async Task<List<FlejesAuto.Modelos.ProductoFleje>> BuscarListaProductosEnApexAsync(string criterioBusqueda)
         {
-            var listaProductos = new List<OxxoFlejesAuto.Modelos.ProductoFleje>();
+            var listaProductos = new List<FlejesAuto.Modelos.ProductoFleje>();
             try
             {
                 string upcLimpio = Uri.EscapeDataString(criterioBusqueda.Trim());
@@ -126,7 +126,7 @@ namespace OxxoFlejesAuto.Datos
                                 string upc = (item["upc"] ?? item["Upc"] ?? item["UPC"])?.ToString() ?? string.Empty;
                                 string nombreReal = (item["nombre"] ?? item["Nombre"] ?? item["NOMBRE"])?.ToString() ?? "Sin Nombre";
 
-                                listaProductos.Add(new OxxoFlejesAuto.Modelos.ProductoFleje
+                                listaProductos.Add(new FlejesAuto.Modelos.ProductoFleje
                                 {
                                     MecanismoSeleccion = false,
                                     Upc = upc,
@@ -148,9 +148,9 @@ namespace OxxoFlejesAuto.Datos
         // ===================================================================
         // 3. 🌟 CONSULTA POR LOTE VIA GET (Para el planograma PDF)
         // ===================================================================
-        public static async Task<List<OxxoFlejesAuto.Modelos.ProductoFleje>> BuscarListaProductosPorLoteEnApexAsync(List<string> listaUpcs)
+        public static async Task<List<FlejesAuto.Modelos.ProductoFleje>> BuscarListaProductosPorLoteEnApexAsync(List<string> listaUpcs)
         {
-            var listaProductos = new List<OxxoFlejesAuto.Modelos.ProductoFleje>();
+            var listaProductos = new List<FlejesAuto.Modelos.ProductoFleje>();
             try
             {
                 if (listaUpcs == null || listaUpcs.Count == 0) return listaProductos;
@@ -158,7 +158,7 @@ namespace OxxoFlejesAuto.Datos
                 // 🌟 LA MAGIA: Limitamos a un máximo de 3 peticiones simultáneas en paralelo
                 using (var semaforo = new System.Threading.SemaphoreSlim(3))
                 {
-                    var tareas = new List<Task<OxxoFlejesAuto.Modelos.ProductoFleje?>>();
+                    var tareas = new List<Task<FlejesAuto.Modelos.ProductoFleje?>>();
 
                     foreach (string upc in listaUpcs)
                     {

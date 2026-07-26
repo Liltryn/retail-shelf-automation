@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace OxxoFlejesAuto.Modelos
+namespace FlejesAuto.Modelos
 {
     public class MuebleTienda
     {

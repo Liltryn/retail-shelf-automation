@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Windows.Forms;
-using OxxoFlejesAuto.Modelos;
+using FlejesAuto.Modelos;
 using System.Collections.Generic;
 
-namespace OxxoFlejesAuto
+namespace FlejesAuto
 {
     public partial class FrmNuevoMueble : Form
     {

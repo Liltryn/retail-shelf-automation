@@ -1,4 +1,4 @@
-﻿namespace OxxoFlejesAuto
+﻿namespace FlejesAuto
 {
     partial class FrmCaraProductos
     {

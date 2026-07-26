@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using OxxoFlejesAuto.Modelos;
+using FlejesAuto.Modelos;
 
-namespace OxxoFlejesAuto.Datos
+namespace FlejesAuto.Datos
 {
     public static class GestorTienda
     {

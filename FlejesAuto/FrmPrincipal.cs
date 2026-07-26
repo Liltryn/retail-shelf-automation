@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using OxxoFlejesAuto.Modelos;
-using OxxoFlejesAuto.Componentes;
-using OxxoFlejesAuto.Datos;
+using FlejesAuto.Modelos;
+using FlejesAuto.Componentes;
+using FlejesAuto.Datos;
 
-namespace OxxoFlejesAuto
+namespace FlejesAuto
 {
     public partial class FrmPrincipal : Form
     {

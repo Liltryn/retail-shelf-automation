@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 
-namespace OxxoFlejesAuto.Modelos
+namespace FlejesAuto.Modelos
 {
     public class CaraMueble
     {

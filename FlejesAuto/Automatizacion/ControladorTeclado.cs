@@ -3,7 +3,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
 
-namespace OxxoFlejesAuto.Automatizacion
+namespace FlejesAuto.Automatizacion
 {
     public static class ControladorTeclado
     {

@@ -1,6 +1,6 @@
 ﻿using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace OxxoFlejesAuto
+namespace FlejesAuto
 {
     partial class FrmNuevoMueble
     {

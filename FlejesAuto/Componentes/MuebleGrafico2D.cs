@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using OxxoFlejesAuto.Modelos;
+using FlejesAuto.Modelos;
 
-namespace OxxoFlejesAuto.Componentes
+namespace FlejesAuto.Componentes
 {
     public class MuebleGrafico2D : UserControl
     {
@@ -66,7 +66,7 @@ namespace OxxoFlejesAuto.Componentes
                                 }
 
                                 formPrincipal.listaMueblesMemoria = listaActualizada;
-                                OxxoFlejesAuto.Datos.GestorTienda.GuardarTienda(listaActualizada);
+                                FlejesAuto.Datos.GestorTienda.GuardarTienda(listaActualizada);
                             }
 
                             this.Dispose();
@@ -178,7 +178,7 @@ namespace OxxoFlejesAuto.Componentes
                 FrmPrincipal formPrincipal = this.FindForm() as FrmPrincipal;
                 if (formPrincipal != null)
                 {
-                    OxxoFlejesAuto.Datos.GestorTienda.GuardarTienda(formPrincipal.listaMueblesMemoria);
+                    FlejesAuto.Datos.GestorTienda.GuardarTienda(formPrincipal.listaMueblesMemoria);
                 }
             }
 
