@@ -23,5 +23,5 @@ Sistema configurable de automatización desarrollado en **C# / .NET** diseñado 
 
 1. **Clonar el repositorio:**
    ```powershell
-   git clone [https://github.com/Liltryn/retail-shelf-automation.git](https://github.com/Liltryn/retail-shelf-automation.git)
-   cd retail-shelf-automation
+  git clone https://github.com/Liltryn/retail-shelf-automation.git
+cd retail-shelf-automation
