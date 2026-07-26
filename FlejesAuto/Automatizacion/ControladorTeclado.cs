@@ -21,7 +21,7 @@ namespace FlejesAuto.Automatizacion
         public static bool EnviarCodigoAAppFlejes(string upc, int delayMilisegundos)
         {
             // 1. Buscamos la ventana por su título exacto en la barra superior de Windows.
-            // NOTA DE JUAN: Reemplaza "Nombre De La App De Oxxo" por el título real que ves en su ventana.
+            // NOTA : Reemplaza "Nombre De app" por el título real que ves en su ventana.
             IntPtr ventanaOxxo = FindWindow(null, "*FLEJES.txt: Bloc de notas");
 
             // Si no la encuentra por el nombre exacto, podemos intentar buscar una aproximación más adelante
